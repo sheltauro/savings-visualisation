@@ -1,6 +1,5 @@
 import React from "react";
 import "./UserInput.css"
-// import "./UserData.css"
 
 function UserInput({ variableName, defaultVariable, variable, setVariable, formatVariable, error }) {
     const currentYear = new Date().getFullYear();

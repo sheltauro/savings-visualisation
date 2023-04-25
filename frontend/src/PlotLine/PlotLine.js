@@ -22,7 +22,9 @@ function PlotLine({ data }) {
         tickFormat: d3.format("$.3s")
       },
       x: {
+        // tickFormat: d3.format("$.3s"),
         ticks: Math.min(data.length, 5),
+        tickFormat: (d) => d.toLocaleString().replace(/[^0-9]/g, ""),
       },
       color: {
         type: "diverging",
