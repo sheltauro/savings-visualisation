@@ -1,26 +1,26 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 
-function ProjectionText({ data }) {
+function ProjectionText({ data, locale, currency,  }) {
   const [age, setAge] = useState(24);
   const [year, setYear] = useState(2023);
   const [worth, setWorth] = useState("$1000");
 
   useEffect(() => {
     let len = data.length;
-    len = Math.min(len, 24);
+    len = Math.min(len, 25);
     if (len > 0) {
       setYear(data[len].year);
       setAge(data[len].age);
       setWorth(
-        data[len].netWorth.toLocaleString("en-US", {
+        data[len].netWorth.toLocaleString(locale, {
           style: "currency",
-          currency: "USD",
+          currency: currency,
           maximumFractionDigits: 0,
         })
       );
     }
-  }, [data]);
+  }, [data, locale, currency]);
 
   return (
     <div className="ProjectionText">

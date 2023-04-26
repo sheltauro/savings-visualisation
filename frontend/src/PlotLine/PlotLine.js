@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import "./PlotLine.css";
 import { addTooltips } from "../tooltip";
 
-function PlotLine({ data }) {
+function PlotLine({ data, locale, currency }) {
   const headerRef = useRef();
 
   useEffect(() => {
@@ -19,7 +19,11 @@ function PlotLine({ data }) {
       },
       y: {
         grid: true,
-        tickFormat: d3.format("$.3s")
+        tickFormat: (d) => d.toLocaleString(locale, {
+            style: "currency",
+            currency: currency,
+            maximumFractionDigits: 0,
+        }),
       },
       x: {
         ticks: Math.min(data.length, 5),
@@ -41,9 +45,9 @@ function PlotLine({ data }) {
           x: "year",
           y: "netWorth",
           strokeWidth: 3,
-          title: (d) => "year: " + d.year + "\nage: " + d.age + "\nworth: " + d.netWorth.toLocaleString("en-US", {
+          title: (d) => "year: " + d.year + "\nage: " + d.age + "\nworth: " + d.netWorth.toLocaleString(locale, {
             style: "currency",
-            currency: "USD",
+            currency: currency,
             maximumFractionDigits: 0,
           })
         }),
@@ -57,7 +61,7 @@ function PlotLine({ data }) {
     }));
     headerRef.current.append(chart);
     return () => chart.remove();
-  }, [data]);
+  }, [data, locale, currency]);
 
   return (
     <div className="PlotLine">

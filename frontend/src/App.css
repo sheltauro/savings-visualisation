@@ -7,6 +7,13 @@
   pointer-events: none;
 }
 
+.text-switch {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* adds space between the rows */
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -33,3 +40,111 @@
     transform: rotate(360deg);
   }
 }
+
+
+* {
+  box-shadow: none;
+}
+
+/* body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #d1dad3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+} */
+
+.container {
+  width: auto;
+  height: auto;
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 14px;
+}
+
+.switch-holder {
+  display: flex;
+  padding: 1px 2px;
+  border-radius: 1px;
+  margin-bottom: 3px;
+
+  box-shadow: -8px -8px 15px rgba(0,0,0,.7),
+              10px 10px 10px rgba(255,255,255, .3),
+              inset 8px 8px 15px rgba(0,0,0,.7),
+              inset 10px 10px 10px rgba(255,255,255, .3);
+
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color:#fff;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 14px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #000;
+  height: 4.5rem;
+}
+
+.switch-label {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  margin-left: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch-toggle {
+  height: 3.8rem;
+}
+
+.switch-toggle input[type="checkbox"] {
+  opacity: 0;
+  z-index: -2;
+}
+
+.switch-toggle input[type="checkbox"] + label {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+  box-shadow: inset -8px -8px 15px rgba(0,0,0,.6),
+              inset 10px 10px 10px rgba(255,255,255, .25);
+  
+}
+
+.switch-toggle input[type="checkbox"] + label::before {
+  position: absolute;
+  content: 'INR';
+  font-size: 13px;
+  text-align: center;
+  line-height: 25px;
+  top: 8px;
+  left: 8px;
+  width: 45px;
+  height: 25px;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #033cb6;
+  box-shadow: -3px -3px 5px rgba(0,0,0,.5),
+              3px 3px 5px #033cb6;
+  transition: .3s ease-in-out;
+}
+
+.switch-toggle input[type="checkbox"]:checked + label::before {
+  left: 50%;
+  content: 'USD';
+  color: #fff;
+  background-color: #00b33c;
+  box-shadow: -3px -3px 5px rgba(0,0,0,.5),
+              3px 3px 5px #00b33c;
+}
+
+

@@ -3,7 +3,7 @@ import { useState } from "react";
 import UserInput from "../UserInput/UserInput";
 import "./UserData.css";
 
-function UserData({ setData }) {
+function UserData({ setData, locale, currency }) {
   const [age, setAge] = useState();
   const [worth, setWorth] = useState();
   const [salary, setSalary] = useState();
@@ -69,10 +69,10 @@ function UserData({ setData }) {
 
   function formatCurrency(value) {
     const formattedValue = parseFloat(cleanValue(value)).toLocaleString(
-      "en-US",
+      locale,
       {
         style: "currency",
-        currency: "USD",
+        currency: currency,
         minimumFractionDigits: 0,
       }
     );
@@ -94,16 +94,16 @@ function UserData({ setData }) {
         variableText={"Net Worth"}
         variableSubText={"The current value of your assets minus your liabilities."}
         variable={worth}
-        defaultVariable={"$100,000"}
+        defaultVariable={(currency === "USD")?"$100,000":"₹1,00,000"}
         setVariable={setWorth}
         formatVariable={formatCurrency}
         error={salaryError}
       ></UserInput>
       <UserInput
-        variableText={"Annual Salary"}
+        variableText={"Annual Income"}
         variableSubText={"Your income after taxes."}
         variable={salary}
-        defaultVariable={"$60,000"}
+        defaultVariable={(currency === "USD")?"$60,000":"₹60,000"}
         setVariable={setSalary}
         formatVariable={formatCurrency}
       ></UserInput>
@@ -111,7 +111,7 @@ function UserData({ setData }) {
         variableText={"Annual Expenses"}
         variableSubText={"Your current cost-of-living."}
         variable={expenses}
-        defaultVariable={"$30,000"}
+        defaultVariable={(currency === "USD")?"$30,000":"₹30,000"}
         setVariable={setExpenses}
         formatVariable={formatCurrency}
       ></UserInput>
