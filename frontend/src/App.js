@@ -2,6 +2,7 @@ import "./App.css";
 import PlotLine from "./PlotLine/PlotLine";
 import { useEffect, useRef, useState } from "react";
 import UserData from "./UserData/UserData";
+import ProjectionText from "./ProjectionText/ProjectionText";
 
 function App() {
   const headerRef = useRef();
@@ -17,6 +18,7 @@ function App() {
     <>
       <div className="App-header">
         <UserData setData={setData}></UserData>
+        <ProjectionText data={data}></ProjectionText>
         <PlotLine data={data}></PlotLine>
       </div>
     </>

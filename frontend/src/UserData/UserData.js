@@ -20,6 +20,10 @@ function UserData({ setData }) {
     let cleanExpenses = cleanValue(expenses);
     let cleanRateOfReturn = rateOfReturn;
 
+    if (isNaN(age)) {
+       age = 0
+    } 
+
     if (age < 13 || age > 80) {
       setAgeError("Age must be between 13 and 80.");
     } else if (cleanSalary < 0) {
@@ -78,7 +82,8 @@ function UserData({ setData }) {
   return (
     <form onSubmit={handleSubmit}>
       <UserInput
-        variableName={"Age"}
+        variableText={"Age"}
+        variableSubText={"The age you are today."}
         variable={age}
         defaultVariable={24}
         setVariable={setAge}
@@ -86,7 +91,8 @@ function UserData({ setData }) {
         error={ageError}
       ></UserInput>
       <UserInput
-        variableName={"Net Worth"}
+        variableText={"Net Worth"}
+        variableSubText={"The current value of your assets minus your liabilities."}
         variable={worth}
         defaultVariable={"$100,000"}
         setVariable={setWorth}
@@ -94,21 +100,24 @@ function UserData({ setData }) {
         error={salaryError}
       ></UserInput>
       <UserInput
-        variableName={"Salary"}
+        variableText={"Annual Salary"}
+        variableSubText={"Your income after taxes."}
         variable={salary}
         defaultVariable={"$60,000"}
         setVariable={setSalary}
         formatVariable={formatCurrency}
       ></UserInput>
       <UserInput
-        variableName={"Expenses"}
+        variableText={"Annual Expenses"}
+        variableSubText={"Your current cost-of-living."}
         variable={expenses}
         defaultVariable={"$30,000"}
         setVariable={setExpenses}
         formatVariable={formatCurrency}
       ></UserInput>
       <UserInput
-        variableName={"Rate of return"}
+        variableText={"Rate of return"}
+        variableSubText={"Subtract inflation from your rate of return."}
         variable={rateOfReturn}
         defaultVariable={"4"}
         setVariable={setRateOfReturn}

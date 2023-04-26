@@ -12,18 +12,23 @@ form {
 
 label {
   font-family: "Google Sans", sans-serif;
+  font-size: larger;
 }
 
 input[type="text"],
-input[type="email"],
 input[type="number"] {
   font-family: "Google Sans", sans-serif;
-  padding: auto;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   justify-content: left;
 }
+
+input[type="text"]:hover,
+input[type="number"]:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 4px 7.5px;
+    transform: translateY(-1px);
+  }
 
 input::placeholder {
     opacity: 0.5;
